@@ -1,0 +1,1 @@
+{"flutter":{"platforms":{"android":{"default":{"projectId":"vox-cast","appId":"1:1078370819951:android:c61c666dd8f8055e58529a","fileOutput":"android/app/google-services.json"}},"dart":{"lib/firebase_options.dart":{"projectId":"vox-cast","configurations":{"android":"1:1078370819951:android:c61c666dd8f8055e58529a","ios":"1:1078370819951:ios:8cbafdce4c4fc2e058529a"}}}}}}
