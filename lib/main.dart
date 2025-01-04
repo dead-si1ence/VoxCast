@@ -23,22 +23,81 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'VoxCast',
+      // theme: ThemeData(
+      //   useMaterial3: true,
+      //   colorScheme: ColorScheme.fromSeed(
+      //     seedColor: const Color.fromARGB(255, 0, 0, 0),
+      //   ),
+      // ),
       theme: ThemeData(
-        useMaterial3: true,
-        colorScheme: ColorScheme.fromSeed(
-          seedColor: const Color.fromARGB(255, 0, 0, 0),
+        brightness: Brightness.dark,
+        primaryColor: const Color.fromARGB(255, 103, 58, 183), // Deep purple
+        colorScheme: const ColorScheme.dark().copyWith(
+          primary: const Color.fromARGB(255, 103, 58, 183),
+          secondary: const Color.fromARGB(255, 59, 59, 59),
+          tertiary: const Color.fromARGB(255, 0, 150, 136),
+          surface: const Color.fromARGB(255, 37, 37, 37),
+        ),
+        // theme: ThemeData(
+        // useMaterial3: true,
+        // colorScheme: ColorScheme.fromSeed(
+        // seedColor: const Color.fromARGB(255, 0, 0, 0),
+        // ),
+        // ),
+        scaffoldBackgroundColor: const Color.fromARGB(255, 18, 18, 18),
+        cardColor: const Color.fromARGB(255, 30, 30, 30),
+        dividerColor: const Color.fromARGB(255, 45, 45, 45),
+        buttonTheme: const ButtonThemeData(
+          buttonColor: Color.fromARGB(255, 103, 58, 183),
+          textTheme: ButtonTextTheme.primary,
+        ),
+        textTheme: const TextTheme(
+          headlineLarge: TextStyle(
+              color: Colors.white, fontSize: 32, fontWeight: FontWeight.bold),
+          headlineMedium: TextStyle(
+              color: Colors.white, fontSize: 28, fontWeight: FontWeight.bold),
+          bodyLarge: TextStyle(color: Colors.white, fontSize: 16),
+          bodyMedium: TextStyle(
+              color: Color.fromARGB(255, 179, 179, 179), fontSize: 14),
+        ),
+        appBarTheme: const AppBarTheme(
+          backgroundColor: Color.fromARGB(255, 30, 30, 30),
+          titleTextStyle: TextStyle(
+              color: Colors.white, fontSize: 20, fontWeight: FontWeight.bold),
+          iconTheme: IconThemeData(color: Colors.white),
+        ),
+        iconTheme: const IconThemeData(
+            color: Color.fromARGB(255, 233, 30, 99)), // Pink icons
+        inputDecorationTheme: InputDecorationTheme(
+          filled: true,
+          fillColor: const Color.fromARGB(255, 37, 37, 37),
+          border: OutlineInputBorder(
+            borderSide:
+                const BorderSide(color: Color.fromARGB(255, 103, 58, 183)),
+            borderRadius: BorderRadius.circular(8),
+          ),
+          enabledBorder: OutlineInputBorder(
+            borderSide:
+                const BorderSide(color: Color.fromARGB(255, 103, 58, 183)),
+            borderRadius: BorderRadius.circular(8),
+          ),
+          focusedBorder: OutlineInputBorder(
+            borderSide:
+                const BorderSide(color: Color.fromARGB(255, 233, 30, 99)),
+            borderRadius: BorderRadius.circular(8),
+          ),
+          labelStyle:
+              const TextStyle(color: Color.fromARGB(255, 179, 179, 179)),
+          hintStyle: const TextStyle(color: Color.fromARGB(255, 128, 128, 128)),
         ),
       ),
-      // theme: ThemeData.from(
-      //   colorScheme: ColorScheme.fromSeed(
-      //     brightness: Brightness.dark,
-      //     seedColor: const Color.fromARGB(255, 176, 161, 219),
-      //     primary: const Color.fromARGB(255, 112, 88, 184),
-      //     secondary: const Color.fromARGB(255, 255, 255, 255),
-      //     surface: const Color.fromARGB(129, 19, 0, 129),
-      //   ),
-      //   useMaterial3: true,
-      // ),
+// theme: ThemeData.from(
+// colorScheme: ColorScheme.fromSeed(
+// brightness: Brightness.dark,
+// seedColor: const Color.fromARGB(255, 176, 161, 219),
+// primary: const Color.fromARGB(255, 112, 88, 184),
+// surface: const Color.fromARGB(255, 58, 58, 58),
+// ),
       debugShowCheckedModeBanner: false,
       home: StreamBuilder(
         stream: FirebaseAuth.instance.authStateChanges(),

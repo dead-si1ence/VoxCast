@@ -1,6 +1,5 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
-import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
 
 import 'package:chat_app/widgets/chat_messages.dart';
@@ -24,15 +23,23 @@ class _ChatScreenState extends State<ChatScreen> {
   @override
   void initState() {
     super.initState();
-    setupPushNotifications(); 
+    setupPushNotifications();
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('VoxCast'),
+        title: const Text(
+          'VoxCast',
+          style: TextStyle(color: Colors.grey),
+        ),
         actions: [
+          IconButton(
+            onPressed: () {},
+            icon: const Icon(Icons.settings),
+            color: Theme.of(context).colorScheme.primary,
+          ),
           IconButton(
             onPressed: () {
               FirebaseAuth.instance.signOut();
