@@ -1,6 +1,10 @@
+// Message bubble widget for displaying individual chat messages
+// Supports different styles for user's own messages and received messages
+
 import 'package:flutter/material.dart';
 
 class MessageBubble extends StatelessWidget {
+  // Constructor for first message in a sequence
   const MessageBubble.first({
     super.key,
     required this.userImage,
@@ -9,6 +13,7 @@ class MessageBubble extends StatelessWidget {
     required this.isMe,
   }) : isFirstInSequence = true;
 
+  // Constructor for subsequent messages in a sequence
   const MessageBubble.next({
     super.key,
     required this.message,
@@ -17,6 +22,7 @@ class MessageBubble extends StatelessWidget {
         userImage = null,
         username = null;
 
+  // Message properties
   final bool isFirstInSequence;
   final String? userImage;
   final String? username;
@@ -29,21 +35,23 @@ class MessageBubble extends StatelessWidget {
 
     return Stack(
       children: [
+        // User avatar display for first message in sequence
         if (userImage != null)
           Positioned(
             top: 15,
             right: isMe ? 0 : null,
             child: CircleAvatar(
-              backgroundImage: NetworkImage(
-                userImage!,
-              ),
+              backgroundImage: NetworkImage(userImage!),
               backgroundColor: theme.colorScheme.primary.withAlpha(180),
               radius: 23,
             ),
           ),
+
+        // Message content container
         Container(
           margin: const EdgeInsets.symmetric(horizontal: 46),
           child: Row(
+            // Align messages based on sender
             mainAxisAlignment:
                 isMe ? MainAxisAlignment.end : MainAxisAlignment.start,
             children: [
@@ -51,7 +59,10 @@ class MessageBubble extends StatelessWidget {
                 crossAxisAlignment:
                     isMe ? CrossAxisAlignment.end : CrossAxisAlignment.start,
                 children: [
+                  // Spacing for first message in sequence
                   if (isFirstInSequence) const SizedBox(height: 18),
+
+                  // Username display for first message
                   if (username != null)
                     Padding(
                       padding: const EdgeInsets.only(
@@ -66,11 +77,15 @@ class MessageBubble extends StatelessWidget {
                         ),
                       ),
                     ),
+
+                  // Message bubble with text
                   Container(
                     decoration: BoxDecoration(
+                      // Different colors for sent vs received messages
                       color: isMe
-                          ? theme.colorScheme.primary
-                          : theme.colorScheme.secondary.withAlpha(200),
+                          ? theme.colorScheme.primary.withAlpha(175)
+                          : theme.colorScheme.secondary.withAlpha(225),
+                      // Custom border radius for message sequence positioning
                       borderRadius: BorderRadius.only(
                         topLeft: !isMe && isFirstInSequence
                             ? Radius.zero
@@ -95,9 +110,7 @@ class MessageBubble extends StatelessWidget {
                       message,
                       style: TextStyle(
                         height: 1.3,
-                        color: isMe
-                            ? Colors.white
-                            : Colors.white,
+                        color: isMe ? Colors.white : Colors.white,
                       ),
                       softWrap: true,
                     ),
